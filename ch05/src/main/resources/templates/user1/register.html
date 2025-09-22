@@ -8,13 +8,13 @@
     <h3>user1 등록</h3>
 
     <a th:href="@{/}">처음</a>
-    <a th:href="@{/user1/modify}">수정</a>
+    <a th:href="@{/user1/list}">목록</a>
 
     <form th:action="@{/user1/register}" method="post">
         <table border="1">
             <tr>
                 <td>아이디</td>
-                <th><input type="text" name="uid"></th>
+                <th><input type="text" name="user_id"></th>
             </tr>
             <tr>
                 <td>이름</td>

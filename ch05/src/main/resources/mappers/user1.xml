@@ -6,14 +6,14 @@
     <!-- 나중에 myBatis 데이터베이스 경로를 작성할 것이다 -->
 
     <insert id="insertUser1">
-        INSERT INTO USER1 VALUES (#{uid},#{name},#{birth},#{age});
+        INSERT INTO USER1 VALUES (#{user_id},#{name},#{birth},#{age})
     </insert>
 
     <select id="selectAllUser1" resultType="kr.co.ch05.dto.User1DTO">
-        select * from USER1;
+        select * from USER1
     </select>
     <select id="selectUser1" resultType="kr.co.ch05.dto.User1DTO">
-        select * from USER1 WHERE uid=#{uid};
+        select * from USER1 WHERE user_id=#{user_id}
     </select>
 
     <update id="updateUser1">
@@ -22,10 +22,10 @@
             birth=#{birth},
             age=#{age}
         WHERE
-            uid=#{uid};
+        user_id=#{user_id}
     </update>
 
     <delete id="deleteUser1">
-        DELETE FROM USER1 WHERE uid=#{uid};
+        DELETE FROM USER1 WHERE user_id=#{user_id}
     </delete>
 </mapper>

@@ -1,0 +1,61 @@
+package kr.co.ch04.dao;
+
+import kr.co.ch04.dto.User1DTO;
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@RequiredArgsConstructor // @Autowired 이 방법보다 안전한 주입 방식
+@Component
+public class User1DAO {
+
+    // @Autowired // 주입
+    private final JdbcTemplate jdbcTemplate; // ??
+
+    public void insert(User1DTO user1DTO) {
+        // 먼저 쿼리를 작성하겠다.
+        String sql = "INSERT INTO USER1 VALUES (?,?,?,?)";
+
+        Object[] params = {
+                user1DTO.getUid(),
+                user1DTO.getName(),
+                user1DTO.getBirth(),
+                user1DTO.getAge()
+        };
+
+        jdbcTemplate.update(sql, params); // executeUpdate() 실행
+
+    }
+
+    public User1DTO select(String uid){
+        String sql = "SELECT * FROM USER1 WHERE uid = ?";
+        return jdbcTemplate.queryForObject(sql, new User1RowMapper(), uid);
+    }
+
+    public List<User1DTO> selectAll(){
+        String sql = "SELECT * FROM USER1";
+        return jdbcTemplate.query(sql, new User1RowMapper());
+    } // List 방식으로 처리해야 되죠
+
+    public void update(User1DTO user1DTO){
+        String sql = "UPDATE USER1 SET name = ?, birth = ?, age = ? WHERE uid = ?";
+
+        Object[] params = {
+                user1DTO.getName(),
+                user1DTO.getBirth(),
+                user1DTO.getAge(),
+                user1DTO.getUid()
+        };
+
+        jdbcTemplate.update(sql, params); // executeUpdate() 실행
+    }
+
+    public void delete(String uid){
+        String sql = "DELETE FROM USER1 WHERE uid = ?";
+        jdbcTemplate.update(sql, uid);
+    }
+
+
+}

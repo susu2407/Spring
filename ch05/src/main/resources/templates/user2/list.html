@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user2::list</title>
+    <!--
+        날짜 : 2025/09/18
+        이름 : 이수연
+        내용 : 5장 MyBaits 복습
+    -->
+</head>
+<body>
+    <h3>user2 목록</h3>
+
+    <a th:href="@{/}">처음</a>
+    <a th:href="@{/user2/register}">등록</a>
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>생년월일</th>
+            <th>나이</th>
+            <th>관리</th>
+        </tr>
+        <tr th:each="">
+            <td th:text="${user.uid}"></td>
+        </tr>
+    </table>
+
+
+
+</body>
+</html>
